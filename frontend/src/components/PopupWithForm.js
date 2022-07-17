@@ -7,7 +7,7 @@ export default function PopupWithForm({
   isOpen,
   onClose,
   onSubmit,
-  buttonText
+  buttonText,
 }) {
   return (
     <div

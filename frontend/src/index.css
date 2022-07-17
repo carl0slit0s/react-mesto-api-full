@@ -1,11 +1,14 @@
 @import url(./vendor/normalize.css);
 @import url(./fonts/inter.css);
 
+@import url(./blocks/link/link.css);
+
 @import url(./blocks/page/page.css);
 @import url(./blocks/content/content.css);
 
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__bar/header__bar.css);
 
 @import url(./blocks/main/main.css);
 
@@ -52,9 +55,21 @@
 @import url(./blocks/form/__input/_type/form__input_type_error.css);
 @import url(./blocks/form/__field/form__field.css);
 @import url(./blocks/form/__submit/_inactive/form__submit_inactive.css);
+@import url(./blocks/form/__note/form__note.css);
+
+@import url(./blocks/form/_auth/form_auth.css);
+@import url(./blocks/form/__title/_auth/form__title_auth.css);
+@import url(./blocks/form/__input/_auth/form__input_auth.css);
+@import url(./blocks/form/__submit/_auth/form__submit_auth.css);
+@import url(./blocks/form/__field/_auth/form__field_auth.css);
+
 
 @import url(./blocks/photo-popup/photo-popup.css);
 @import url(./blocks/photo-popup/__photo/photo-popup__photo.css);
 @import url(./blocks/photo-popup/__title/photo-popup__title.css);
 @import url(./blocks/popup/__conteiner/_type/popup__conteiner_type_photo.css);
 @import url(./blocks/popup/_terget/popup_terget_add-photo.css);
+
+@import url(./blocks/popup-notify/popup-notify.css);
+@import url(./blocks/popup-notify/__massage/popup-notify__massage.css);
+@import url(./blocks/popup-notify/__image/popup-notify__image.css);
