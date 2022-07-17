@@ -122,8 +122,9 @@ function App() {
   }
 
   const handleUpdateUser = (userData) => {
+    let token = localStorage.getItem('token');
     api
-      .editProfile(userData)
+      .editProfile(userData, token)
       .then((data) =>
         setCurrentUser({ ...currentUser, name: data.name, about: data.about })
       )
