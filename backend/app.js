@@ -8,6 +8,7 @@ const { login, creatUser } = require('./controllers/user');
 const { isAuthorized } = require('./middlewares/auth');
 const { notFoundPageErorr } = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { isCorse } = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+app.use(isCorse);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
