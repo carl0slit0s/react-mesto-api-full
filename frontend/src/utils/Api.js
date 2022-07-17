@@ -40,8 +40,9 @@ class Api {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${token}`
-      },
+        authorization: `Bearer ${token}`,
+      },      
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.about,
