@@ -120,6 +120,5 @@ class Api {
 export const api = new Api('http://api.project-mesto72.nomoredomains.xyz/api', {
   headers: {
     'Content-Type': 'application/json',
-    authorization: `Bearer ${localStorage.getItem('token')}`
   },
 });
