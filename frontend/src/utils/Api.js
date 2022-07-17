@@ -119,7 +119,7 @@ class Api {
 }
 
 export const api = new Api('http://api.project-mesto72.nomoredomains.xyz/api', {
-  headers: {
-    authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-  },
+  // headers: {
+  //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+  // },
 });
