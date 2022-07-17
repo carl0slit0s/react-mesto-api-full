@@ -39,9 +39,9 @@ class Api {
   editProfile(data, token) {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${token}`,
-      },      
+      // headers: {
+      //   authorization: `Bearer ${token}`,
+      // },      
       credentials: 'include',
       body: JSON.stringify({
         name: data.name,
