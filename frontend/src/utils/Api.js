@@ -36,7 +36,8 @@ class Api {
     }
   }
 
-  editProfile(data, token) {
+  editProfile(data) {
+    const token = localStorage.getItem('jwt')
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
       headers: {

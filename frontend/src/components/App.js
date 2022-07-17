@@ -122,9 +122,8 @@ function App() {
   }
 
   const handleUpdateUser = (userData) => {
-    const token = localStorage.getItem('jwt')
     api
-      .editProfile(userData, token)
+      .editProfile(userData)
       .then((data) =>
         setCurrentUser({ ...currentUser, name: data.name, about: data.about })
       )
