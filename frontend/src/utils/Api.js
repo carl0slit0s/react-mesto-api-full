@@ -20,6 +20,7 @@ class Api {
     if (isLiked) {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'DELETE',
+        credentials: 'include',
         // headers: {
         //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
         //   'Content-Type': 'application/json',
@@ -28,6 +29,7 @@ class Api {
     } else {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'PUT',
+        credentials: 'include',
         // headers: {
         //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
         //   'Content-Type': 'application/json',
@@ -53,6 +55,7 @@ class Api {
   addCard(name, link) {
     return fetch(`${this.server}/cards`, {
       method: 'POST',
+      credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
       //   'Content-Type': 'application/json',
@@ -67,6 +70,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this.server}/cards/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
       //   'Content-Type': 'application/json',
@@ -77,6 +81,7 @@ class Api {
   addLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'PUT',
+      credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
       //   'Content-Type': 'application/json',
@@ -87,6 +92,7 @@ class Api {
   deleteLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
       //   'Content-Type': 'application/json',
@@ -97,6 +103,7 @@ class Api {
   changeAvatar(avatar) {
     return fetch(`${this.server}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
       //   'Content-Type': 'application/json',
