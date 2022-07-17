@@ -38,6 +38,7 @@ function App() {
 
   const history = useHistory();
 
+
   useEffect(() => {
     if (loggedIn) {
       api
@@ -121,8 +122,9 @@ function App() {
   }
 
   const handleUpdateUser = (userData) => {
+    const token = localStorage.getItem('jwt')
     api
-      .editProfile(userData)
+      .editProfile(userData, token)
       .then((data) =>
         setCurrentUser({ ...currentUser, name: data.name, about: data.about })
       )

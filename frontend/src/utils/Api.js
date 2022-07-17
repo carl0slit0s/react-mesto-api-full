@@ -36,10 +36,12 @@ class Api {
     }
   }
 
-  editProfile(data) {
+  editProfile(data, token) {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
-      headers: this.options.headers,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
