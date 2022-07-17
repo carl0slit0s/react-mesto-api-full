@@ -20,18 +20,18 @@ class Api {
     if (isLiked) {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'DELETE',
-        headers: {
-          authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-          'Content-Type': 'application/json',
-        },
+        // headers: {
+        //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+        //   'Content-Type': 'application/json',
+        // },
       }).then(this._checkResponse);
     } else {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'PUT',
-        headers: {
-          authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-          'Content-Type': 'application/json',
-        },
+        // headers: {
+        //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+        //   'Content-Type': 'application/json',
+        // },
       }).then(this._checkResponse);
     }
   }
@@ -39,10 +39,10 @@ class Api {
   editProfile(data) {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -53,10 +53,10 @@ class Api {
   addCard(name, link) {
     return fetch(`${this.server}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
       body: JSON.stringify({
         name,
         link,
@@ -67,40 +67,40 @@ class Api {
   deleteCard(id) {
     return fetch(`${this.server}/cards/${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
     }).then(this._checkResponse);
   }
 
   addLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'PUT',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
     }).then(this._checkResponse);
   }
 
   deleteLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'DELETE',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
     }).then(this._checkResponse);
   }
 
   changeAvatar(avatar) {
     return fetch(`${this.server}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+      //   'Content-Type': 'application/json',
+      // },
       body: JSON.stringify({
         avatar: avatar,
       }),
@@ -119,7 +119,7 @@ class Api {
 }
 
 export const api = new Api('http://api.project-mesto72.nomoredomains.xyz/api', {
-  headers: {
-    authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
-  },
+  // headers: {
+  //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
+  // },
 });
