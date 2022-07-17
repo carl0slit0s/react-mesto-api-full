@@ -2,15 +2,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const { login, creatUser } = require('./controllers/user');
 const { isAuthorized } = require('./middlewares/auth');
 const { notFoundPageErorr } = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { isCorse } = require('./middlewares/cors');
+// const { isCorse } = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
+
+const allowedCors = [
+  'localhost:3000',
+  'https://project-mesto72.nomoredomains.xyz/',
+  'http://project-mesto72.nomoredomains.xyz/',
+  'http://api.project-mesto72.nomoredomains.xyz/',
+  'https://api.project-mesto72.nomoredomains.xyz/',
+];
 
 const PORT = 3000;
 const app = express();
@@ -20,7 +29,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.use(isCorse);
+// app.use(isCorse);
+app.use(cors({
+  origin: allowedCors,
+  credentials: true,
+}));
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

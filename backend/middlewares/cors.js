@@ -3,7 +3,7 @@ const allowedCors = [
   'https://project-mesto72.nomoredomains.xyz/',
   'http://project-mesto72.nomoredomains.xyz/',
   'http://api.project-mesto72.nomoredomains.xyz/',
-  'http://api.project-mesto72.nomoredomains.xyz/',
+  'https://api.project-mesto72.nomoredomains.xyz/',
 ];
 module.exports.isCors = (req, res, next) => {
   const { origin } = req.headers;
