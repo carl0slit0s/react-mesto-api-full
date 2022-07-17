@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.project-mesto72.nomoredomains.xyz/api';
+export const BASE_URL = 'http://api.project-mesto72.nomoredomains.xyz';
 
 const _checkResponse = (res) => {
   if (res.ok) {
@@ -13,6 +13,7 @@ const _checkResponse = (res) => {
 export function register(email, password) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -24,6 +25,7 @@ export function register(email, password) {
 export function authorize(email, password) {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },
