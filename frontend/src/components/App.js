@@ -213,11 +213,12 @@ function App() {
         .then((res) => {
           if (res) {
             let userData = {
-              username: res.username,
+              username: res.name,
               email: res.email,
+              about: res.about
             };
-            setCurrentUser(userData)
-            console.log(userData)
+            setCurrentUser({ ...currentUser, name: res.user.name, about: res.user.about })
+            console.log(res)
             setLoggedIn(true);
             history.push('/');
           }
