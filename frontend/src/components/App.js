@@ -126,7 +126,7 @@ function App() {
     api
       .editProfile(userData)
       .then((data) =>
-        setCurrentUser({ ...currentUser, name: data.user.name, about: data.user.about })
+        setCurrentUser({ ...currentUser, name: data.name, about: data.about })
       )
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
