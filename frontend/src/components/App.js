@@ -216,7 +216,8 @@ function App() {
               username: res.username,
               email: res.email,
             };
-
+            setCurrentUser(userData)
+            console.log(userData)
             setLoggedIn(true);
             history.push('/');
           }

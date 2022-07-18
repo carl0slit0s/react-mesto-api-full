@@ -14,7 +14,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const allowedCors = [
-  'localhost:3000',
+  'http://localhost:3000',
   'https://project-mesto72.nomoredomains.xyz',
   'http://project-mesto72.nomoredomains.xyz',
   'http://api.project-mesto72.nomoredomains.xyz',

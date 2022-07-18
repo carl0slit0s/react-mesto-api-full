@@ -130,3 +130,8 @@ export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
     'Content-Type': 'application/json',
   },
 });
+// export const api = new Api('http://localhost:3001', {
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
