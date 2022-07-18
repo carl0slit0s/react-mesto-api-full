@@ -45,7 +45,10 @@ class Api {
       //   authorization: `Bearer ${token}`,
       // },      
       credentials: 'include',
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about,
+      }),
     }).then(this._checkResponse);
   }
 
@@ -122,13 +125,13 @@ class Api {
   }
 }
 
-export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-// export const api = new Api('http://localhost:3001', {
+// export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
 //   headers: {
 //     'Content-Type': 'application/json',
 //   },
 // });
+export const api = new Api('http://localhost:3001', {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});

@@ -81,6 +81,8 @@ module.exports.getUsers = (req, res, next) => {
 
 module.exports.updateUsers = (req, res, next) => {
   const { name, about } = req.body;
+  console.log(name, about);
+  console.log(123123123);
   User.findByIdAndUpdate(
     req.user.id,
     { name, about },

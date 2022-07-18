@@ -44,6 +44,7 @@ function App() {
       api
         .getProfileData()
         .then((profile) => {
+          console.log('123', profile)
           setCurrentUser(profile);
         })
         .catch((err) => console.log(err));
@@ -122,12 +123,13 @@ function App() {
   }
 
   const handleUpdateUser = (userData) => {
-    let token = localStorage.getItem('token');
+    console.log('отправили', userData)
     api
       .editProfile(userData)
-      .then((data) =>
+      .then((data) =>{
+        console.log('вернули', data);
         setCurrentUser({ ...currentUser, name: data.name, about: data.about })
-      )
+      })
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
   };
@@ -246,7 +248,7 @@ function App() {
           message: 'Регистрация прошла успешно',
         });
         setIsStatusAuthPopupOpen(true);
-        history.push('/sign-in');
+        history.push('/signin');
       })
       .catch(() => {
         setDataTooltip({
@@ -260,7 +262,7 @@ function App() {
   const handleOut = () => {
     localStorage.removeItem('token');
     setLoggedIn(false);
-    history.push('/sign-in');
+    history.push('/signin');
   };
 
   return (
@@ -282,11 +284,11 @@ function App() {
               />
             </ProtectedRoute>
 
-            <Route path='/sign-up'>
+            <Route path='/signup'>
               <Register handleRegister={handleRegister} />
             </Route>
 
-            <Route path='/sign-in'>
+            <Route path='/signin'>
               <Login handleLogin={handleLogin} userData={currentUser} />
             </Route>
           </Switch>
@@ -332,7 +334,7 @@ function App() {
 
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
           <Route>
-            {loggedIn ? <Redirect to='/' /> : <Redirect to='/sign-in' />}
+            {loggedIn ? <Redirect to='/' /> : <Redirect to='/signin' />}
           </Route>
         </div>
       </CurrentUserContext.Provider>

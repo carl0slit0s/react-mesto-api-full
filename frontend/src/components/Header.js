@@ -12,20 +12,20 @@ export default function Header({ handleOut, userData }) {
         className='header__logo'
       />
       <Switch>
-        <Route path={'/sign-up'}>
-          <Link className='link' to='/sign-in'>
+        <Route path={'/signup'}>
+          <Link className='link' to='/signin'>
             Войти
           </Link>
         </Route>
-        <Route path={'/sign-in'}>
-          <Link className='link' to='/sign-up'>
+        <Route path={'/signin'}>
+          <Link className='link' to='/signup'>
             Регистрация
           </Link>
         </Route>
         <Route exact path={'/'}>
           <div className='header__bar'>
             <p>{userData.email}</p>
-            <Link className='link' onClick={handleOut} to='/sign-in'>
+            <Link className='link' onClick={handleOut} to='/signin'>
               Выйти
             </Link>
           </div>
