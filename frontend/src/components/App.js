@@ -124,7 +124,7 @@ function App() {
   const handleUpdateUser = (userData) => {
     let token = localStorage.getItem('token');
     api
-      .editProfile(userData, token)
+      .editProfile(userData)
       .then((data) =>
         setCurrentUser({ ...currentUser, name: data.user.name, about: data.user.about })
       )
@@ -217,7 +217,7 @@ function App() {
               email: res.email,
               about: res.about
             };
-            setCurrentUser({ ...currentUser, name: res.user.name, about: res.user.about })
+            setCurrentUser({ ...currentUser, name: res.user.name, about: res.user.about, avatar: res.user.avatar })
             console.log(res)
             setLoggedIn(true);
             history.push('/');

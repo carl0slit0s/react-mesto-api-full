@@ -38,17 +38,14 @@ class Api {
     }
   }
 
-  editProfile(data, token) {
+  editProfile(data) {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
       // headers: {
       //   authorization: `Bearer ${token}`,
       // },      
       credentials: 'include',
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about,
-      }),
+      body: JSON.stringify(data),
     }).then(this._checkResponse);
   }
 
