@@ -22,6 +22,7 @@ import successImg from '../images/success-img.jpg';
 import errorImg from '../images/error-img.jpg';
 
 import * as auth from '../utils/Auth';
+import Card from './Card';
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -44,7 +45,6 @@ function App() {
       api
         .getProfileData()
         .then((profile) => {
-          console.log('123', profile)
           setCurrentUser(profile);
         })
         .catch((err) => console.log(err));
@@ -57,31 +57,32 @@ function App() {
             link: cardData.link,
             likes: cardData.likes,
             _id: cardData._id,
-            ownerId: cardData.owner._id,
+            ownerId: cardData.owner,
           }));
           setCards(formatedData);
         })
         .catch((err) => console.log(err));
     }
-  }, []);
+  }, [loggedIn]);
 
-  useEffect(() => {
-    if (loggedIn) {
-      api
-        .getCards()
-        .then((cardList) => {
-          const formatedData = cardList.map((cardData) => ({
-            name: cardData.name,
-            link: cardData.link,
-            likes: cardData.likes,
-            _id: cardData._id,
-            ownerId: cardData.owner._id,
-          }));
-          setCards(formatedData);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     api
+  //       .getCards()
+  //       .then((cardList) => {
+  //         console.log('карты из второго юза')
+  //         const formatedData = cardList.map((cardData) => ({
+  //           name: cardData.name,
+  //           link: cardData.link,
+  //           likes: cardData.likes,
+  //           _id: cardData._id,
+  //           ownerId: cardData.owner,
+  //         }));
+  //         setCards(formatedData);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (loggedIn) {
@@ -94,17 +95,17 @@ function App() {
   }, []);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
+    const isLiked = card.likes.some((i) => i._id === currentUser.id);
     api
-      .changeLikeCardStatus(card._id, isLiked)
-      .then((cardData) => {
+    .changeLikeCardStatus(card._id, isLiked)
+    .then((cardData) => {
+        
         const newCard = {
           name: cardData.name,
           link: cardData.link,
           likes: cardData.likes,
           _id: cardData._id,
-          ownerId: cardData.owner._id,
+          ownerId: cardData.owner,
         };
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -123,12 +124,11 @@ function App() {
   }
 
   const handleUpdateUser = (userData) => {
-    console.log('отправили', userData)
+    // console.log('отправили', userData)
     api
       .editProfile(userData)
       .then((data) =>{
-        console.log('вернули', data);
-        setCurrentUser({ ...currentUser, name: data.name, about: data.about })
+        setCurrentUser(data)
       })
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
@@ -137,7 +137,9 @@ function App() {
   const handleUpdateAvatar = (avatar) => {
     api
       .changeAvatar(avatar)
-      .then((data) => setCurrentUser({ ...currentUser, avatar: data.avatar }))
+      .then((data) => {
+        console.log(data)
+        setCurrentUser({ ...currentUser, avatar: data.avatar })})
       .then(() => closeAllPopups())
       .catch((err) => console.log(err));
   };
@@ -151,11 +153,12 @@ function App() {
           link: cardData.link,
           likes: cardData.likes,
           _id: cardData._id,
-          ownerId: cardData.owner._id,
+          ownerId: cardData.owner,
         };
         setCards([newCard, ...cards]);
       })
-      .then(() => closeAllPopups())
+      .then(() => {
+        closeAllPopups()})
       .catch((err) => console.log(err));
   };
 
@@ -219,8 +222,7 @@ function App() {
               email: res.email,
               about: res.about
             };
-            setCurrentUser({ ...currentUser, name: res.user.name, about: res.user.about, avatar: res.user.avatar })
-            console.log(res)
+            setCurrentUser(res)
             setLoggedIn(true);
             history.push('/');
           }

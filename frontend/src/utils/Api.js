@@ -5,13 +5,19 @@ class Api {
   }
 
   getProfileData() {
-    return fetch(`${this.server}/users/me`, this.options).then(
+    return fetch(`${this.server}/users/me`, {
+      headers: this.options.headers,     
+      credentials: 'include',
+    }).then(
       this._checkResponse
     );
   }
 
   getCards() {
-    return fetch(`${this.server}/cards`, this.options).then(
+    return fetch(`${this.server}/cards`, {
+      headers: this.options.headers,     
+      credentials: 'include',
+    }).then(
       this._checkResponse
     );
   }
@@ -20,6 +26,7 @@ class Api {
     if (isLiked) {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'DELETE',
+        headers: this.options.headers,     
         credentials: 'include',
         // headers: {
         //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -29,6 +36,7 @@ class Api {
     } else {
       return fetch(`${this.server}/cards/${id}/likes`, {
         method: 'PUT',
+        headers: this.options.headers,     
         credentials: 'include',
         // headers: {
         //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -41,9 +49,7 @@ class Api {
   editProfile(data) {
     return fetch(`${this.server}/users/me`, {
       method: 'PATCH',
-      // headers: {
-      //   authorization: `Bearer ${token}`,
-      // },      
+      headers: this.options.headers,      
       credentials: 'include',
       body: JSON.stringify({
         name: data.name,
@@ -55,6 +61,7 @@ class Api {
   addCard(name, link) {
     return fetch(`${this.server}/cards`, {
       method: 'POST',
+      headers: this.options.headers,     
       credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -70,6 +77,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this.server}/cards/${id}`, {
       method: 'DELETE',
+      headers: this.options.headers,     
       credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -81,6 +89,7 @@ class Api {
   addLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'PUT',
+      headers: this.options.headers,     
       credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -92,6 +101,7 @@ class Api {
   deleteLike(id) {
     return fetch(`${this.server}/cards/${id}/likes`, {
       method: 'DELETE',
+      headers: this.options.headers,     
       credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',
@@ -103,6 +113,7 @@ class Api {
   changeAvatar(avatar) {
     return fetch(`${this.server}/users/me/avatar`, {
       method: 'PATCH',
+      headers: this.options.headers,     
       credentials: 'include',
       // headers: {
       //   authorization: 'b14b5010-4fa1-4827-8329-0c3d4de2a70b',

@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -21,7 +25,7 @@ module.exports.getUserData = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('NotFound');
     })
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -81,8 +85,6 @@ module.exports.getUsers = (req, res, next) => {
 
 module.exports.updateUsers = (req, res, next) => {
   const { name, about } = req.body;
-  console.log(name, about);
-  console.log(123123123);
   User.findByIdAndUpdate(
     req.user.id,
     { name, about },
@@ -92,7 +94,7 @@ module.exports.updateUsers = (req, res, next) => {
       name: user.name,
       about: user.about,
       avatar: user.avatar,
-      email: user.avatar,
+      email: user.email,
       _id: user._id,
     }))
     .catch(next);
@@ -104,8 +106,8 @@ module.exports.updateAvatar = (req, res, next) => {
     { avatar: req.body.avatar },
     { new: true, runValidators: true },
   )
-    .then((avatar) => {
-      res.send({ avatar });
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -130,7 +132,9 @@ module.exports.login = (req, res, next) => {
         if (!isPasswordCorrect) {
           authErorr();
         }
-        const token = jwt.sign({ id: user._id }, 'very_secret', { expiresIn: '7d' });
+        const token = jwt.sign({ id: user._id },
+          NODE_ENV === 'production' ? JWT_SECRET : 'very_secret',
+          { expiresIn: '7d' });
         res
           .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
           .send({ message: 'Привет!', token });
