@@ -136,13 +136,13 @@ class Api {
   }
 }
 
-// export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// });
-export const api = new Api('http://localhost:3001', {
+export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
   headers: {
     'Content-Type': 'application/json',
   },
 });
+// export const api = new Api('http://localhost:3001', {
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
