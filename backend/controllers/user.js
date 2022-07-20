@@ -132,9 +132,11 @@ module.exports.login = (req, res, next) => {
         if (!isPasswordCorrect) {
           authErorr();
         }
-        const token = jwt.sign({ id: user._id },
+        const token = jwt.sign(
+          { id: user._id },
           NODE_ENV === 'production' ? JWT_SECRET : 'very_secret',
-          { expiresIn: '7d' });
+          { expiresIn: '7d' },
+        );
         res
           .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
           .send({ message: 'Привет!', token });

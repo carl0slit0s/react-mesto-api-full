@@ -10,7 +10,6 @@ const { login, creatUser } = require('./controllers/user');
 const { isAuthorized } = require('./middlewares/auth');
 const { notFoundPageErorr } = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const { isCorse } = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
@@ -22,7 +21,7 @@ const allowedCors = [
   'https://api.project-mesto72.nomoredomains.xyz',
 ];
 
-const PORT = 3000;
+const PORT = 3001;
 const app = express();
 app.use(cookieParser());
 
