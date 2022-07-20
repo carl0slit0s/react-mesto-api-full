@@ -136,7 +136,7 @@ class Api {
   }
 }
 
-export const api = new Api('http://api.project-mesto72.nomoredomains.xyz', {
+export const api = new Api('api.project-mesto72.nomoredomains.xyz', {
   headers: {
     'Content-Type': 'application/json',
   },
